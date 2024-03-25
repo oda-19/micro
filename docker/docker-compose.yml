@@ -1,9 +1,66 @@
 services:
+  database:
+    image: postgres:latest
+
+    ports:
+      - "5432:5432"
+
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "123456"
+      POSTGRES_DB: "licensing_service"
+
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/1-init.sql
+      - ./data.sql:/docker-entrypoint-initdb.d/2-data.sql
+
+    networks:
+      backend:
+        aliases:
+          - "database"
+
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  config-server:
+    image: docker.io/library/config-server:0.0.1-SNAPSHOT
+
+    ports:
+      - "8071:8071"
+
+    environment:
+      ENCRYPT_KEY: "74e797aef725989e62fc27b2deed0754ac5db0b0482a0a620dbf26a6686e1a4f"
+
+    networks:
+      backend:
+        aliases:
+          - "config-server"
+
   licensingservice:
     image: docker.io/library/licensing-service:0.0.1-SNAPSHOT
+
     ports:
       - "8080:8080"
+
+    networks:
+      - backend
+
     environment:
-      SPRING_PROFILES_ACTIVE: "dev"
-      SPRING_CLOUD_CONFIG_URI:
-        http://localhost:8071
+      PROFILE: "dev"
+      CONFIGSERVER_URI: "http://configserver:8071"
+      CONFIGSERVER_PORT: "8071"
+      DATABASESERVER_PORT: "5432"
+      ENCRYPT_KEY: "IMSYMMETRIC"
+
+    depends_on:
+      database:
+        condition: service_healthy
+      config-server:
+        condition: service_started
+
+networks:
+  backend:
+    driver: bridge
