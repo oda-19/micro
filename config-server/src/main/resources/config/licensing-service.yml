@@ -1,0 +1,93 @@
+example:
+  property: I AM THE DEFAULT
+
+logstash:
+  host: 3.136.161.26:5000
+logging:
+  config: classpath:logback-spring.xml
+
+spring:
+  jpa:
+    show-sql: true
+
+    hibernate:
+      ddl-auto: none
+      aming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+    database: POSTGRESQL
+
+  datasource:
+    platform: postgres
+    testWhileIdle: true
+    validationQuery: SELECT 1
+    driver-class-name: org.postgresql.Driver
+
+  cloud:
+    loadbalancer:
+      ribbon:
+        enabled: false
+
+    stream:
+      bindings:
+        inboundOrgChanges:
+          destination: orgChangeTopic
+          content-type: application/json
+          group: licensingGroup
+
+      kafka:
+        binder:
+          zkNodes: kafka
+          brokers: kafka
+
+  zipkin:
+    baseUrl: http://zipkin:9411
+
+  sleuth:
+    sampler:
+      percentage: 1
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: *
+
+    enabled-by-default: true
+
+eureka:
+  instance:
+    preferIpAddress: true
+
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+
+    serviceUrl:
+      defaultZone: http://localhost:8070/eureka/
+
+redis:
+  server: redis
+  port: 6379
+
+security:
+  oauth2:
+    resource:
+      userInfoUri: http://authenticationservice:8082/user
+    client:
+      grant-type: client_credentials
+
+signing:
+  key: "345345fsdfsf5345"
+
+keycloak:
+  realm: spmia-realm
+  auth-server-url: http://keycloak:8080/auth
+  ssl-required: external
+  resource: ostock
+  credentials.secret: 5988f899-a5bf-4f76-b15f-f1cd0d2c81ba
+  use-resource-role-mappings: true
+  bearer-only: true

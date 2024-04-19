@@ -1,0 +1,5 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/licensing_service
+    username: postgres
+    password: {cipher}4acfd3e9fc29b2fa8de1f1d4e28b651971f725a47bc9b52e8b4f126c8e87ee85

@@ -20,16 +20,10 @@
     <description>micro</description>
 
     <modules>
-        <module>licensing-service</module>
         <module>config-server</module>
+        <module>eureka-server</module>
+        <module>gateway-server</module>
+        <module>licensing-service</module>
+        <module>organization-service</module>
     </modules>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 </project>
