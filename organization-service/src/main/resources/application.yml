@@ -1,4 +1,8 @@
 spring:
+  cloud:
+    compatibility-verifier:
+      enabled: false
+
   application:
     name: organization-service
 
@@ -9,12 +13,12 @@ spring:
     import: optional:configserver:http://localhost:8071
 
   datasource:
+    driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/licensing_service
     username: postgres
     password: 123456
-
-logging:
-  level:
-    com.netflix: WARN
-    org.springframework.web: WARN
-    com.optimagrowth: DEBUG
+  jpa:
+    hibernate:
+      ddl-auto: create
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect

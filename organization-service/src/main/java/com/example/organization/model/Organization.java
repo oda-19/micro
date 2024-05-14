@@ -6,7 +6,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.ToString;
 
-@ToString
 @Entity
 @Table(name = "organizations")
 public class Organization {

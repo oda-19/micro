@@ -13,7 +13,6 @@ public class UserContextHolder {
             userContext.set(context);
 
         }
-
         return userContext.get();
     }
 

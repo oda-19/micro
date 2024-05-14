@@ -1,3 +1,6 @@
+server:
+  port: 8081
+
 spring:
   jpa:
     show-sql: true
@@ -23,27 +26,6 @@ spring:
       ribbon:
         enabled: false
 
-    stream:
-      bindings:
-        output:
-          destination: orgChangeTopic
-          content-type: application/json
-
-      kafka:
-        binder:
-          zkNodes: kafka
-          brokers: kafka
-
-  zipkin:
-    baseUrl: http://zipkin:9411
-
-  sleuth:
-    sampler:
-      percentage: 1
-
-server:
-  port: 8081
-
 management:
   endpoints:
     web:
@@ -60,21 +42,4 @@ eureka:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defaultZone: http://localhost:8070/eureka/
-
-security:
-  oauth2:
-    resource:
-      userInfoUri: http://authenticationservice:8082/user
-
-signing:
-  key: "345345fsdfsf5345"
-
-keycloak:
-  realm: spmia-realm
-  auth-server-url: http://keycloak:8080/auth
-  ssl-required: external
-  resource: ostock
-  credentials.secret: 5988f899-a5bf-4f76-b15f-f1cd0d2c81ba
-  use-resource-role-mappings: true
-  bearer-only: true
+      defaultZone: http://localhost:8761/eureka/
