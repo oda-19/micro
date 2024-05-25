@@ -1,13 +1,7 @@
 package com.example.license.service.client;
 
-import brave.ScopedSpan;
-import brave.Tracer;
-
 import com.example.license.model.Organization;
-import com.example.license.utils.UserContext;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
