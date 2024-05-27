@@ -1,5 +1,6 @@
 package com.example.license.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -18,16 +19,18 @@ public class License {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "namePo")
+    @Column(name = "namepo")
     private String namePo;
 
-    @Column(name = "idType")
-    private int idType;
+    @JsonManagedReference
+    @ManyToOne
+    @JoinColumn(name = "idtype")
+    private Type idType;
 
-    @Column(name = "startDate")
+    @Column(name = "startdate")
     private Date startDate;
 
-    @Column(name = "endDate")
+    @Column(name = "enddate")
     private Date endDate;
 
     @Column(name = "count")

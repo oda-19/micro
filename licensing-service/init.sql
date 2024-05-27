@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS public.licenses
     endDate Date,
     count integer,
     CONSTRAINT licenses_pkey PRIMARY KEY (id),
-    CONSTRAINT licenses_types_id_fkey FOREIGN KEY (idType)
+    CONSTRAINT idType FOREIGN KEY (idType)
         REFERENCES public.types (id) MATCH SIMPLE
         ON UPDATE CASCADE
         ON DELETE CASCADE
