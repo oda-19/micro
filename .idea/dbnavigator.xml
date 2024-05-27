@@ -6,8 +6,8 @@
     <value-preview-pinned value="false" />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="65d09771-a6e2-4cf6-9c30-005934dbd77c">
-      <console name="licensing_service" type="STANDARD" schema="licensing_service" session="Main" />
+    <connection id="38348920-590e-413b-b036-577516038261">
+      <console name="license-service" type="STANDARD" schema="license-service" session="Main" />
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
@@ -19,9 +19,13 @@
   <component name="DBNavigator.Project.ExecutionManager">
     <retain-sticky-names value="false" />
   </component>
-  <component name="DBNavigator.Project.FileConnectionMappingManager">
-    <mapping file-url="file://$PROJECT_DIR$/docker/data.sql" connection-id="65d09771-a6e2-4cf6-9c30-005934dbd77c" session-id="MAIN" current-schema="licensing_service" />
-    <mapping file-url="file://$PROJECT_DIR$/docker/init.sql" connection-id="65d09771-a6e2-4cf6-9c30-005934dbd77c" session-id="MAIN" current-schema="public" />
+  <component name="DBNavigator.Project.MethodExecutionManager">
+    <method-browser />
+    <execution-history>
+      <group-entries value="true" />
+      <execution-inputs />
+    </execution-history>
+    <argument-values-cache />
   </component>
   <component name="DBNavigator.Project.ObjectQuickFilterManager">
     <last-used-operator value="EQUAL" />
@@ -32,20 +36,20 @@
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="65d09771-a6e2-4cf6-9c30-005934dbd77c" active="true" signed="true">
+      <connection id="38348920-590e-413b-b036-577516038261" active="true" signed="true">
         <database>
-          <name value="licensing_service" />
+          <name value="license-service" />
           <description value="" />
           <database-type value="POSTGRES" />
           <config-type value="BASIC" />
-          <database-version value="15.2" />
+          <database-version value="16.3" />
           <driver-source value="BUNDLED" />
           <driver-library value="" />
           <driver value="" />
           <url-type value="DATABASE" />
           <host value="localhost" />
           <port value="5432" />
-          <database value="licensing_service" />
+          <database value="license-service" />
           <tns-folder value="" />
           <tns-profile value="" />
           <type value="USER_PASSWORD" />

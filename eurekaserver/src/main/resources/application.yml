@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: eurekaserver
+
+  config:
+    import: "optional:configserver:http://configserver:8071"
+
+    loadbalancer:
+      ribbon:
+        enabled: false

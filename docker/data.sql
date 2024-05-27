@@ -1,1 +1,0 @@
-INSERT INTO public.licenses VALUES ('1', '1', 'Software Product', 'Ostock', 'complete', 'I AM DEV');

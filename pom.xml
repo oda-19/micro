@@ -7,7 +7,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.2.3</version>
+        <version>3.0.1</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -20,10 +20,9 @@
     <description>micro</description>
 
     <modules>
-        <module>config-server</module>
-        <module>eureka-server</module>
-        <module>gateway-server</module>
+        <module>configserver</module>
+        <module>eurekaserver</module>
+        <module>gatewayserver</module>
         <module>licensing-service</module>
-        <module>organization-service</module>
     </modules>
 </project>

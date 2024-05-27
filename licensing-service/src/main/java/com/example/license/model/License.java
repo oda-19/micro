@@ -1,54 +1,35 @@
 package com.example.license.model;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import org.springframework.hateoas.RepresentationModel;
+import java.util.Date;
 
 @Getter
 @Setter
 @ToString
 @Entity
-@Table(name="licenses")
-@JsonInclude(JsonInclude.Include.NON_NULL)
-public class License extends RepresentationModel<License> {
+@Table(name = "licenses")
+public class License {
     @Id
-    @Column(name = "license_id", nullable = false)
-    private String licenseId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
-    @Column(name = "description", nullable = false)
-    private String description;
+    @Column(name = "namePo")
+    private String namePo;
 
-    @Column(name = "organization_id", nullable = false)
-    private String organizationId;
+    @Column(name = "idType")
+    private int idType;
 
-    @Column(name = "product_name", nullable = false)
-    private String productName;
+    @Column(name = "startDate")
+    private Date startDate;
 
-    @Column(name = "license_type", nullable = false)
-    private String licenseType;
+    @Column(name = "endDate")
+    private Date endDate;
 
-    @Column(name="comment")
-    private String comment;
-
-    @Transient
-    private String organizationName;
-
-    @Transient
-    private String contactName;
-
-    @Transient
-    private String contactPhone;
-
-    @Transient
-    private String contactEmail;
-
-    public License withComment(String comment){
-        this.setComment(comment);
-        return this;
-    }
+    @Column(name = "count")
+    private Integer count;
 }

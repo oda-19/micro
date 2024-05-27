@@ -1,69 +1,47 @@
 package com.example.license.controller;
 
+
 import com.example.license.model.License;
 import com.example.license.service.LicenseService;
-import com.example.license.utils.UserContextHolder;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.concurrent.TimeoutException;
-
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
-
 @RestController
-@RequestMapping(value="v1/organization/{organizationId}/license")
+@RequestMapping(value = "/licenses")
 public class LicenseController {
-    private static final Logger logger = LoggerFactory.getLogger(LicenseController.class);
-
     @Autowired
     private LicenseService licenseService;
 
     @RequestMapping(value="/{licenseId}",method = RequestMethod.GET)
-    public ResponseEntity<License> getLicense( @PathVariable("organizationId") String organizationId,
-                                               @PathVariable("licenseId") String licenseId) {
-
-        License license = licenseService.getLicense(licenseId, organizationId, "");
-        license.add(
-                linkTo(methodOn(LicenseController.class).getLicense(organizationId, license.getLicenseId())).withSelfRel(),
-                linkTo(methodOn(LicenseController.class).createLicense(license)).withRel("createLicense"),
-                linkTo(methodOn(LicenseController.class).updateLicense(license)).withRel("updateLicense"),
-                linkTo(methodOn(LicenseController.class).deleteLicense(license.getLicenseId())).withRel("deleteLicense")
-        );
-
+    public ResponseEntity<License> getLicense(@PathVariable("licenseId") int licenseId){
+        License license = licenseService.getLicense(licenseId);
         return ResponseEntity.ok(license);
     }
 
-    @RequestMapping(value="/{licenseId}/{clientType}",method = RequestMethod.GET)
-    public License getLicensesWithClient( @PathVariable("organizationId") String organizationId,
-                                          @PathVariable("licenseId") String licenseId,
-                                          @PathVariable("clientType") String clientType) {
-
-        return licenseService.getLicense(licenseId, organizationId, clientType);
-    }
-
-    @PutMapping
-    public ResponseEntity<License> updateLicense(@RequestBody License request) {
-        return ResponseEntity.ok(licenseService.updateLicense(request));
+    @GetMapping
+    public ResponseEntity<Iterable<License>> getAllLicenses() {
+        Iterable<License> licenses = licenseService.findAllLicenses();
+        return ResponseEntity.ok(licenses);
     }
 
     @PostMapping
-    public ResponseEntity<License> createLicense(@RequestBody License request) {
-        return ResponseEntity.ok(licenseService.createLicense(request));
+    public ResponseEntity<String> createLicense(@RequestBody License request){
+        licenseService.createLicense(request);
+        return ResponseEntity.ok("Добавление лицензии прошло успешно");
+
+    }
+
+    @PutMapping(value="/{licenseId}")
+    public ResponseEntity<String> updateLicense(@PathVariable("licenseId") int licenseId, @RequestBody License request){
+        licenseService.updateLicense(licenseId, request);
+        return ResponseEntity.ok("Редактирование лицензии прошло успешно");
+
     }
 
     @DeleteMapping(value="/{licenseId}")
-    public ResponseEntity<String> deleteLicense(@PathVariable("licenseId") String licenseId) {
-        return ResponseEntity.ok(licenseService.deleteLicense(licenseId));
-    }
-
-    @RequestMapping(value="/",method = RequestMethod.GET)
-    public List<License> getLicenses( @PathVariable("organizationId") String organizationId) throws TimeoutException {
-        logger.debug("LicenseServiceController Correlation id: {}", UserContextHolder.getContext().getCorrelationId());
-        return licenseService.getLicensesByOrganization(organizationId);
+    public ResponseEntity<String> deleteLicense(@PathVariable("licenseId") int licenseId){
+        licenseService.deleteLicense(licenseId);
+        return ResponseEntity.ok("Удаление лицензии прошло успешно");
     }
 }
