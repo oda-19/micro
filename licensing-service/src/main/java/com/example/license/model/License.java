@@ -22,7 +22,6 @@ public class License {
     @Column(name = "namepo")
     private String namePo;
 
-    @JsonManagedReference
     @ManyToOne
     @JoinColumn(name = "idtype")
     private Type idType;

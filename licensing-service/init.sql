@@ -1,13 +1,13 @@
 CREATE TABLE IF NOT EXISTS public.types
 (
-    id integer,
+    id serial NOT NULL,
     name character varying(100),
     CONSTRAINT types_pkey PRIMARY KEY (id)
 );
 
 CREATE TABLE IF NOT EXISTS public.licenses
 (
-    id integer,
+    id serial NOT NULL,
     namePo character varying(255),
     idType integer,
     startDate Date,

@@ -1,6 +1,5 @@
 package com.example.license.controller;
 
-
 import com.example.license.model.License;
 import com.example.license.service.LicenseService;
 import org.springframework.beans.factory.annotation.Autowired;
