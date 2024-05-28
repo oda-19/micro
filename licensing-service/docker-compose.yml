@@ -40,7 +40,7 @@ services:
     image: oda/eurekaserver:0.0.1-SNAPSHOT
     container_name: eurekaserver
     ports:
-      - "8761:8761"
+      - "8070:8070"
 
     depends_on:
       database:
@@ -80,7 +80,7 @@ services:
         aliases:
           - "gatewayserver"
 
-  license-service:
+  licensing-service:
     image: oda/licensing-service:0.0.1-SNAPSHOT
 
     ports:
@@ -94,7 +94,6 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://database:5432/license-service
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: 123456
-      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://localhost:8761/eureka
 
     depends_on:
       database:

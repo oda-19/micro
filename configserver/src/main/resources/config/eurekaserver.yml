@@ -7,7 +7,7 @@ spring:
       context-path: /admin
 
 server:
-  port: 8761
+  port: 8070
 
 eureka:
   instance:

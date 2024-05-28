@@ -3,17 +3,4 @@ spring:
     name: eurekaserver
 
   config:
-    import: optional:configserver:http://localhost:8071
-
-server:
-  port: 8761
-
-eureka:
-  instance:
-    hostname: localhost
-
-  client:
-    registerWithEureka: false
-    fetchRegistry: false
-    service-url:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+    import: configserver:http://localhost:8071/
