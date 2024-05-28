@@ -10,6 +10,16 @@ spring:
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
 
+eureka:
+  instance:
+    preferIpAddress: true
+
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://eurekaserver:8761/eureka
+
 management:
   endpoints:
     web:
@@ -17,11 +27,3 @@ management:
         include: "*"
     enabled-by-default: true
 
-#eureka:
-  #instance:
-    #preferIpAddress: true
-  #client:
-    #registerWithEureka: true
-    #fetchRegistry: true
-    #serviceUrl:
-      #defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
