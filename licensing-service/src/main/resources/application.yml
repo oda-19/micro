@@ -2,13 +2,16 @@ spring:
   application:
     name:
       licensing-service
+  #profiles:
+    #active:
+      #dev
+
+
   #main:
     #allow-bean-definition-overriding: true
   #cloud:
     #compatibility-verifier:
       #enabled: false
-  profiles:
-    active: dev
 
 #management.endpoints.enabled-by-default: false
 #management.endpoint.health:

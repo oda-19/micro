@@ -1,6 +1,3 @@
 spring:
   application:
     name: eurekaserver
-
-
-                        #uri: http://${CONFIGSERVER_URI:localhost}:${CONFIGSERVER_PORT:8071}
