@@ -15,6 +15,7 @@ spring:
     validationQuery: SELECT 1
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://database:5432/license-service
+    #url: jdbc:postgresql://localhost:5432/license-service
     username: postgres
     password: 123456
 
@@ -38,3 +39,4 @@ eureka:
     fetchRegistry: true
     service-url:
       defaultZone: http://eurekaserver:8070/eureka/
+      #defaultZone: http://localhost:8070/eureka/
