@@ -1,19 +1,16 @@
 spring:
-  main:
-    allow-bean-definition-overriding: true
-  cloud:
-    compatibility-verifier:
-      enabled: false
-  config:
-    import: "optional:configserver:http://localhost:8071/"
-
   application:
-    name: licensing-service
-
+    name:
+      licensing-service
+  #main:
+    #allow-bean-definition-overriding: true
+  #cloud:
+    #compatibility-verifier:
+      #enabled: false
   profiles:
     active: dev
 
-management.endpoints.enabled-by-default: false
-management.endpoint.health:
-  enabled: true
-  show-details: always
+#management.endpoints.enabled-by-default: false
+#management.endpoint.health:
+  #enabled: true
+  #show-details: always

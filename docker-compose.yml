@@ -1,7 +1,8 @@
+version: '2.1'
 services:
   database:
     image: "postgres:latest"
-
+    container_name: database
     ports:
       - "5432:5432"
 
@@ -27,7 +28,7 @@ services:
 
   configserver:
     image: oda/configserver:0.0.1-SNAPSHOT
-
+    container_name: configserver
     ports:
       - "8071:8071"
 
@@ -38,9 +39,13 @@ services:
 
   eurekaserver:
     image: oda/eurekaserver:0.0.1-SNAPSHOT
-
+    container_name: eurekaserver
     ports:
       - "8070:8070"
+
+    environment:
+      CONFIGSERVER_URI: "configserver"
+      CONFIGSERVER_PORT: "8071"
 
     depends_on:
       database:
@@ -63,9 +68,9 @@ services:
       PROFILE: "default"
       SERVER_PORT: "8072"
       CONFIGSERVER_URI: "http://configserver:8071"
-      EUREKASERVER_URI: "http://eurekaserver:8070/eureka/"
+      EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
       EUREKASERVER_PORT: "8070"
-      CONFIGSERVER_PORT: "8071"
+      CONFIGSERVER_PORT: "8761"
 
     depends_on:
       database:
@@ -80,7 +85,7 @@ services:
         aliases:
           - "gatewayserver"
 
-  license-service:
+  licensing-service:
     image: oda/licensing-service:0.0.1-SNAPSHOT
 
     ports:
@@ -88,7 +93,7 @@ services:
 
     environment:
       PROFILE: "dev"
-      CONFIGSERVER_URI: "http://configserver:8071"
+      CONFIGSERVER_URI: "configserver"
       CONFIGSERVER_PORT: "8071"
       DATABASESERVER_PORT: "5432"
       SPRING_DATASOURCE_URL: jdbc:postgresql://database:5432/license-service

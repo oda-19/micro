@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/license-service
+    url: jdbc:postgresql://database:5432/license-service
     username: postgres
     password: 123456
   jpa:
@@ -17,11 +17,12 @@ management:
         include: "*"
     enabled-by-default: true
 
-#eureka:
-  #instance:
-    #preferIpAddress: true
-  #client:
-    #registerWithEureka: true
-    #fetchRegistry: true
-    #serviceUrl:
-      #defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    service-url:
+      defaultZone: http://eurekaserver:8070/eureka/
+
