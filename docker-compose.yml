@@ -1,7 +1,8 @@
+version: '2.1'
 services:
   database:
     image: "postgres:latest"
-
+    container_name: database
     ports:
       - "5432:5432"
 
@@ -27,7 +28,7 @@ services:
 
   configserver:
     image: oda/configserver:0.0.1-SNAPSHOT
-
+    container_name: configserver
     ports:
       - "8071:8071"
 
@@ -41,6 +42,10 @@ services:
     container_name: eurekaserver
     ports:
       - "8070:8070"
+
+    environment:
+      CONFIGSERVER_URI: "configserver"
+      CONFIGSERVER_PORT: "8071"
 
     depends_on:
       database:
@@ -88,7 +93,7 @@ services:
 
     environment:
       PROFILE: "dev"
-      CONFIGSERVER_URI: "http://configserver:8071"
+      CONFIGSERVER_URI: "configserver"
       CONFIGSERVER_PORT: "8071"
       DATABASESERVER_PORT: "5432"
       SPRING_DATASOURCE_URL: jdbc:postgresql://database:5432/license-service

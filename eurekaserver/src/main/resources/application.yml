@@ -2,5 +2,5 @@ spring:
   application:
     name: eurekaserver
 
-  config:
-    import: configserver:http://localhost:8071/
+
+                        #uri: http://${CONFIGSERVER_URI:localhost}:${CONFIGSERVER_PORT:8071}
