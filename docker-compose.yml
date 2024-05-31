@@ -89,7 +89,7 @@ services:
     image: oda/licensing-service:0.0.1-SNAPSHOT
     container_name: licensing-service
     ports:
-      - "8080:8080"
+      - "8180:8080"
 
     environment:
       PROFILE: "dev"
@@ -108,6 +108,25 @@ services:
 
     networks:
       - backend
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:24.0.4
+    container_name: keycloak
+    command: [ "start-dev", "--import-realm" ]
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+
+    ports:
+      - "8080:8080"
+
+    volumes:
+      - ./docker/keycloak/realms/:/opt/keycloak/data/import/
+
+    networks:
+      backend:
+        aliases:
+          - "keycloak"
 
 networks:
   backend:
