@@ -14,8 +14,8 @@ spring:
     testWhileIdle: true
     validationQuery: SELECT 1
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://database:5432/license-service
-    #url: jdbc:postgresql://localhost:5432/license-service
+    #url: jdbc:postgresql://database:5432/license-service
+    url: jdbc:postgresql://localhost:5432/license-service
     username: postgres
     password: 123456
 
@@ -23,6 +23,12 @@ spring:
     loadbalancer:
       ribbon:
         enabled: false
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/security-licensing-service
 
 management:
   endpoints:
@@ -38,5 +44,18 @@ eureka:
     registerWithEureka: true
     fetchRegistry: true
     service-url:
-      defaultZone: http://eurekaserver:8070/eureka/
-      #defaultZone: http://localhost:8070/eureka/
+      #defaultZone: http://eurekaserver:8070/eureka/
+      defaultZone: http://localhost:8070/eureka/
+
+server:
+  port: 8180
+#keycloak:
+  #realm: security-licensing-service
+  #auth-server-url: http://localhost:8080/auth
+  #auth-server-url: http://keycloak:8080/auth
+  #ssl-required: external
+  #resource: licensing-service
+  #credentials:
+    #secret: FFhuCum7ousthj6DrRJVRYNTjJmr9xkC
+  #use-resource-role-mappings: true
+  #bearer-only: true
