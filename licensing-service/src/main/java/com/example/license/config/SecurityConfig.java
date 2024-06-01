@@ -17,22 +17,38 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.authority.mapping.SimpleAuthorityMapper;
 import org.springframework.security.core.session.SessionRegistryImpl;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
+import org.springframework.security.oauth2.server.resource.authentication.JwtGrantedAuthoritiesConverter;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.session.RegisterSessionAuthenticationStrategy;
 import org.springframework.security.web.authentication.session.SessionAuthenticationStrategy;
 
 @Configuration
 @EnableWebSecurity
-@EnableMethodSecurity(jsr250Enabled = true)
+@EnableMethodSecurity
 public class SecurityConfig {
+//    @Bean
+//    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
+//        return httpSecurity.authorizeHttpRequests(authorize -> authorize
+//                        .anyRequest().authenticated())
+//                .oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults()))
+//                .build();
+//    }
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
+        JwtAuthenticationConverter jwtAuthenticationConverter = new JwtAuthenticationConverter();
+        JwtGrantedAuthoritiesConverter grantedAuthoritiesConverter = new JwtGrantedAuthoritiesConverter();
+
+        grantedAuthoritiesConverter.setAuthoritiesClaimName("roles"); // Имя claim, содержащего роли
+
+        jwtAuthenticationConverter.setJwtGrantedAuthoritiesConverter(grantedAuthoritiesConverter);
+
         return httpSecurity.authorizeHttpRequests(authorize -> authorize
                         .anyRequest().authenticated())
-                .oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults()))
+                .oauth2ResourceServer(oauth2 -> oauth2.jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter)))
                 .build();
     }
-
 //    @Override
 //    protected void configure(HttpSecurity http) throws Exception {
 //        super.configure(http);

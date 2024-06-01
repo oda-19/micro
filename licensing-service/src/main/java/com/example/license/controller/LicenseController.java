@@ -2,6 +2,7 @@ package com.example.license.controller;
 
 import com.example.license.model.License;
 import com.example.license.service.LicenseService;
+import jakarta.annotation.security.RolesAllowed;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,18 +13,21 @@ public class LicenseController {
     @Autowired
     private LicenseService licenseService;
 
+    @RolesAllowed({ "ADMIN", "USER" })
     @RequestMapping(value="/{licenseId}",method = RequestMethod.GET)
     public ResponseEntity<License> getLicense(@PathVariable("licenseId") int licenseId){
         License license = licenseService.getLicense(licenseId);
         return ResponseEntity.ok(license);
     }
 
+    @RolesAllowed({ "ADMIN", "USER" })
     @GetMapping
     public ResponseEntity<Iterable<License>> getAllLicenses() {
         Iterable<License> licenses = licenseService.findAllLicenses();
         return ResponseEntity.ok(licenses);
     }
 
+    @RolesAllowed({ "ADMIN" })
     @PostMapping
     public ResponseEntity<String> createLicense(@RequestBody License request){
         licenseService.createLicense(request);
@@ -31,6 +35,7 @@ public class LicenseController {
 
     }
 
+    @RolesAllowed({ "ADMIN" })
     @PutMapping(value="/{licenseId}")
     public ResponseEntity<String> updateLicense(@PathVariable("licenseId") int licenseId, @RequestBody License request){
         licenseService.updateLicense(licenseId, request);
@@ -38,6 +43,7 @@ public class LicenseController {
 
     }
 
+    @RolesAllowed({ "ADMIN" })
     @DeleteMapping(value="/{licenseId}")
     public ResponseEntity<String> deleteLicense(@PathVariable("licenseId") int licenseId){
         licenseService.deleteLicense(licenseId);

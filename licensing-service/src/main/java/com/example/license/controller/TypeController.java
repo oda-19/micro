@@ -2,8 +2,10 @@ package com.example.license.controller;
 
 import com.example.license.model.Type;
 import com.example.license.service.TypeService;
+import jakarta.annotation.security.RolesAllowed;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -12,18 +14,21 @@ public class TypeController {
     @Autowired
     private TypeService typeService;
 
+    @RolesAllowed({ "ADMIN", "USER" })
     @RequestMapping(value="/{typeId}",method = RequestMethod.GET)
     public ResponseEntity<Type> getType(@PathVariable("typeId") int typeId){
         Type type = typeService.getType(typeId);
         return ResponseEntity.ok(type);
     }
 
+    @RolesAllowed({ "ADMIN", "USER" })
     @GetMapping
     public ResponseEntity<Iterable<Type>> getAllTypes() {
         Iterable<Type> types = typeService.findAllTypes();
         return ResponseEntity.ok(types);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     public ResponseEntity<String> createType(@RequestBody Type request){
         typeService.createType(request);
@@ -31,6 +36,7 @@ public class TypeController {
 
     }
 
+    @RolesAllowed({ "ADMIN" })
     @PutMapping(value="/{typeId}")
     public ResponseEntity<String> updateType(@PathVariable("typeId") int typeId, @RequestBody Type request){
         typeService.updateType(typeId, request);
@@ -38,6 +44,7 @@ public class TypeController {
 
     }
 
+    @RolesAllowed({ "ADMIN" })
     @DeleteMapping(value="/{typeId}")
     public ResponseEntity<String> deleteType(@PathVariable("typeId") int typeId){
         typeService.deleteType(typeId);
