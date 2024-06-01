@@ -16,6 +16,13 @@ spring:
       resourceserver:
         jwt:
           issuer-uri: http://localhost:8080/realms/security-licensing-service
+          jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
+
+jwt:
+  auth:
+    converter:
+      resource-id: licensing-service
+      principle-attribute: preferred_username
 
 management:
   endpoints:
