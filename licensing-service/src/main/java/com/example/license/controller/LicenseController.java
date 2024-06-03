@@ -5,7 +5,7 @@ import com.example.license.service.LicenseService;
 import jakarta.annotation.security.RolesAllowed;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
+//import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -14,21 +14,21 @@ public class LicenseController {
     @Autowired
     private LicenseService licenseService;
 
-    @PreAuthorize("hasRole('ADMIN') OR hasRole('USER')")
+    //@PreAuthorize("hasRole('ADMIN') OR hasRole('USER')")
     @RequestMapping(value="/{licenseId}",method = RequestMethod.GET)
     public ResponseEntity<License> getLicense(@PathVariable("licenseId") int licenseId){
         License license = licenseService.getLicense(licenseId);
         return ResponseEntity.ok(license);
     }
 
-    @PreAuthorize("hasRole('ADMIN') OR hasRole('USER')")
+    //@PreAuthorize("hasRole('ADMIN') OR hasRole('USER')")
     @GetMapping
     public ResponseEntity<Iterable<License>> getAllLicenses() {
         Iterable<License> licenses = licenseService.findAllLicenses();
         return ResponseEntity.ok(licenses);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    //@PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     public ResponseEntity<String> createLicense(@RequestBody License request){
         licenseService.createLicense(request);
@@ -36,7 +36,7 @@ public class LicenseController {
 
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    //@PreAuthorize("hasRole('ADMIN')")
     @PutMapping(value="/{licenseId}")
     public ResponseEntity<String> updateLicense(@PathVariable("licenseId") int licenseId, @RequestBody License request){
         licenseService.updateLicense(licenseId, request);
@@ -44,7 +44,7 @@ public class LicenseController {
 
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    //@PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping(value="/{licenseId}")
     public ResponseEntity<String> deleteLicense(@PathVariable("licenseId") int licenseId){
         licenseService.deleteLicense(licenseId);

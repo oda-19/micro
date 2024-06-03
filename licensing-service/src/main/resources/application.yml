@@ -6,6 +6,8 @@ spring:
     #active:
       #dev
 
+  mvc:
+    static-path-pattern: /static/**
 
   #main:
     #allow-bean-definition-overriding: true
@@ -13,7 +15,7 @@ spring:
     #compatibility-verifier:
       #enabled: false
 
-#management.endpoints.enabled-by-default: false
+  #management.endpoints.enabled-by-default: false
 #management.endpoint.health:
   #enabled: true
   #show-details: always

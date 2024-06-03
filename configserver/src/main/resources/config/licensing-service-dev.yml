@@ -16,6 +16,7 @@ spring:
       resourceserver:
         jwt:
           issuer-uri: http://localhost:8080/realms/security-licensing-service
+          #issuer-uri: http://keycloak:8080/realms/security-licensing-service
           jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
 
 jwt:
@@ -32,7 +33,7 @@ management:
     enabled-by-default: true
 
 server:
-  port: 8180
+  port: 8081
 
 eureka:
   instance:
