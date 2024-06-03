@@ -100,9 +100,9 @@ services:
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: 123456
       KEYCLOAK_AUTH_SERVER_URL: http://keycloak:8080/realms/security-licensing-service/protocol/openid-connect/auth
-      KEYCLOAK_REALM: security-licensing-service
-      KEYCLOAK_RESOURCE: licensing-service
-      KEYCLOAK_CREDENTIALS_SECRET: FFhuCum7ousthj6DrRJVRYNTjJmr9xkC
+      KEYCLOAK_REALM: *
+      KEYCLOAK_RESOURCE: *
+      KEYCLOAK_CREDENTIALS_SECRET: *
 
     depends_on:
       database:

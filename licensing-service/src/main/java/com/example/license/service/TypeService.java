@@ -24,12 +24,16 @@ public class TypeService {
         }
     }
 
-    public void updateType(int typeId, Type type){
+    public boolean updateType(int typeId, Type type){
         Type existingType = typeRepository.findById(typeId).orElse(null);
         if (existingType != null) {
-            type.setId(typeId);
-            typeRepository.save(type);
+            //type.setId(typeId);
+            existingType.setName(type.getName());
+            //typeRepository.save(type);
+            typeRepository.save(existingType);
+            return true; // Возвращаем true, если обновление прошло успешно
         }
+        return false;
     }
 
     public void deleteType(int typeId){

@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Диплом_список типов</title>
+  <title>Список типов лицензий</title>
   <link rel="stylesheet" href="/static/style/nicepage.css" type="text/css" th:href="@{/static/style/nicepage.css}">
   <link rel="stylesheet" href="/static/style/types.css" type="text/css" th:href="@{/static/style/types.css}">
   <script class="u-script" type="text/javascript" src="/static/style/jquery.js" th:src="@{/static/style/jquery.js}"></script>
@@ -91,8 +91,8 @@
             <div class="custom-expanded u-table u-table-responsive u-table-1">
               <table class="u-table-entity u-table-entity-1">
                 <colgroup>
-                  <col width="49.3%">
-                  <col width="50.7%">
+                  <col width="69.3%">
+                  <col width="30.7%">
                 </colgroup>
                 <thead class="u-align-center u-custom-font u-font-montserrat u-table-header u-table-header-1">
                 <tr style="height: 50px;">
@@ -104,12 +104,16 @@
                 <tr th:each="el : ${types}" style="height: 32px;">
                   <td class="u-border-2 u-border-grey-15 u-border-no-left u-border-no-right u-table-cell" th:text="${el.name}"></td>
                   <td class="u-border-2 u-border-grey-15 u-border-no-left u-border-no-right u-table-cell u-table-cell-4">
-                    <span class="u-file-icon u-icon u-icon-8">
-                      <img src="/static/images/4007762.png" alt="" th:href="@{/types/update/{id}/(id=${el.id})}">
-                    </span>&nbsp; &nbsp;|&nbsp; ​&nbsp;
-                    <span class="u-file-icon u-icon u-icon-9">
-                      <img src="/static/images/7104075.png" alt="" th:href="@{/types/delete/{id}/(id=${el.id})}">
+                    <a th:href="@{/types/update/{id}/(id=${el.id})}">
+                      <span class="u-file-icon u-icon u-icon-8">
+                        <img src="/static/images/4007762.png" alt="">
                     </span>
+                    </a>&nbsp; &nbsp;|&nbsp; ​&nbsp;
+                    <a th:href="@{/types/delete/{id}/(id=${el.id})}">
+                      <span class="u-file-icon u-icon u-icon-9">
+                        <img src="/static/images/7104075.png" alt="">
+                      </span>
+                    </a>
                   </td>
                 </tr>
                 </tbody>
