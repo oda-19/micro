@@ -14,7 +14,10 @@ public class TypeService {
         return typeRepository.findById(typeId).orElse(null);
     }
 
-    public Iterable<Type> findAllTypes() {
+    public Iterable<Type> findAllTypes(String keyword) {
+        if (keyword != null) {
+            return typeRepository.searchByNameContainsIgnoreCase(keyword);
+        }
         return typeRepository.findAll();
     }
 

@@ -4,6 +4,7 @@ import com.example.license.model.Type;
 import com.example.license.service.TypeService;
 import jakarta.annotation.security.RolesAllowed;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 //import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.xml.transform.sax.SAXResult;
+import java.util.List;
 
 @Controller
 @RequestMapping(value = "/types")
@@ -35,9 +39,10 @@ public class TypeController {
 
 //    @PreAuthorize("hasRole('ADMIN') OR hasRole('USER')")
     @GetMapping
-    public String getAllTypes(Model model) {
-        Iterable<Type> types = typeService.findAllTypes();
+    public String getAllTypes(Model model, @Param("keyword") String keyword) {
+        Iterable<Type> types = typeService.findAllTypes(keyword);
         model.addAttribute("types", types);
+        model.addAttribute("keyword", keyword);
         return "types"; // Имя HTML view, которое должен отрендерить Thymeleaf
     }
 
@@ -114,12 +119,12 @@ public class TypeController {
 
     //@PreAuthorize("hasRole('ADMIN')")
     @PostMapping(value="/delete/{typeId}")
-    public ModelAndView deleteType(@PathVariable("typeId") int typeId, ModelMap model) {
+    public ModelAndView deleteType(@PathVariable("typeId") int typeId, ModelMap model, @Param("keyword") String keyword) {
         Type type = typeService.getType(typeId);
         typeService.deleteType(type);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("redirect:/types");
-        modelAndView.addObject("types", typeService.findAllTypes());
+        modelAndView.addObject("types", typeService.findAllTypes(keyword));
         return modelAndView;
     }
 }
