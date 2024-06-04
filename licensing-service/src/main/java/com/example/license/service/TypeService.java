@@ -36,7 +36,7 @@ public class TypeService {
         return false;
     }
 
-    public void deleteType(int typeId){
-        typeRepository.deleteById(typeId);
+    public void deleteType(Type type){
+        typeRepository.delete(type);
     }
 }

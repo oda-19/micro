@@ -45,9 +45,10 @@
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/static/style/create_type.css" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/static/style/home.css" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/static/style/jquery.js" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/static/style/licenses.css" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/static/style/licenses.css" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/static/style/nicepage.css" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/static/style/nicepage.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/static/style/nicepage.js" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/static/style/support.css" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/static/style/types.css" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/static/style/update_license.css" charset="UTF-8" />
