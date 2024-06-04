@@ -26,7 +26,6 @@ public class TypeController {
 //        return ResponseEntity.ok(type);
 //    }
 
-
     //@PreAuthorize("hasRole('ADMIN') OR hasRole('USER')")
 //    @GetMapping
 //    public ResponseEntity<Iterable<Type>> getAllTypes() {
@@ -34,7 +33,7 @@ public class TypeController {
 //        return ResponseEntity.ok(types);
 //    }
 
-    //@PreAuthorize("hasRole('ADMIN') OR hasRole('USER')")
+//    @PreAuthorize("hasRole('ADMIN') OR hasRole('USER')")
     @GetMapping
     public String getAllTypes(Model model) {
         Iterable<Type> types = typeService.findAllTypes();
@@ -73,13 +72,6 @@ public class TypeController {
 //
 //    }
 
-//    @PutMapping(value="/update/{typeId}")
-//    public String updateType(@PathVariable("typeId") int typeId, @ModelAttribute Type request, Model model) {
-//        typeService.updateType(typeId, request);
-//        model.addAttribute("message", "Редактирование типа лицензии прошло успешно");
-//        return "redirect:/types"; // Перенаправление обратно к списку типов
-//    }
-
     //@PreAuthorize("hasRole('ADMIN')")
     @GetMapping(value="/update/{typeId}/")
     public String showUpdateForm(@PathVariable("typeId") int typeId, Model model) {
@@ -112,44 +104,7 @@ public class TypeController {
 //        return ResponseEntity.ok("Удаление типа лицензии прошло успешно");
 //    }
 
-//    @DeleteMapping(value="/delete/{typeId}")
-//    public String deleteType(@PathVariable("typeId") int typeId, Model model) {
-//        typeService.deleteType(typeId);
-//        model.addAttribute("message", "Удаление типа лицензии прошло успешно");
-//        return "redirect:/types"; // Перенаправление обратно к списку типов
-//    }
-
-//    @GetMapping("/delete/{typeId}")
-//    public String showDeleteForm(@PathVariable("typeId") int typeId, Model model) {
-//        // Добавление типа лицензии в модель для отображения в модальном окне
-//        Type type = typeService.getType(typeId);
-//        model.addAttribute("type", type);
-//        return "types"; // Возвращаем страницу со списком типов и модальным окном
-//    }
-//    @GetMapping("/delete/{typeId}")
-//    public String findById(@PathVariable int id, Model model) {
-//        model.addAttribute("user", typeService.getType(id));
-//        return "user_form";
-//    }
-//    @DeleteMapping("/delete/{typeId}/")
-//    public String deleteType(@PathVariable("typeId") int typeId, Model model) {
-//        typeService.deleteType(typeId);
-//        model.addAttribute("message", "Удаление типа лицензии прошло успешно");
-//        return "redirect:/types";
-//    }
-//    @GetMapping("/delete/{typeId}")
-//    public Type findById(@PathVariable int typeId) {
-//        return typeService.getType(typeId);
-//    }
-
     //@PreAuthorize("hasRole('ADMIN')")
-//    @PostMapping("/delete/{typeId}/")
-//    public String deleteType(@PathVariable("typeId") int typeId, Model model) {
-//        typeService.deleteType(typeId);
-//        model.addAttribute("message", "Удаление типа лицензии прошло успешно");
-//        return "redirect:/types";
-//    }
-
     @GetMapping(value="/delete/{typeId}")
     public String deleteTypeConfirmation(@PathVariable("typeId") int typeId, ModelMap model) {
         Type type = typeService.getType(typeId);
@@ -157,6 +112,7 @@ public class TypeController {
         return "delete_type :: delete-type";
     }
 
+    //@PreAuthorize("hasRole('ADMIN')")
     @PostMapping(value="/delete/{typeId}")
     public ModelAndView deleteType(@PathVariable("typeId") int typeId, ModelMap model) {
         Type type = typeService.getType(typeId);
@@ -166,5 +122,4 @@ public class TypeController {
         modelAndView.addObject("types", typeService.findAllTypes());
         return modelAndView;
     }
-
 }
