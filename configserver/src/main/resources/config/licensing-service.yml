@@ -24,19 +24,19 @@ spring:
       ribbon:
         enabled: false
 
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: http://localhost:8080/realms/security-licensing-service
+  #security:
+    #oauth2:
+      #resourceserver:
+        #jwt:
+          #issuer-uri: http://localhost:8080/realms/security-licensing-service
           #issuer-uri: http://keycloak:8080/realms/security-licensing-service
-          jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
+          #jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
 
-jwt:
-  auth:
-    converter:
-      resource-id: licensing-service
-      principle-attribute: preferred_username
+#jwt:
+  #auth:
+    #converter:
+      #resource-id: licensing-service
+      #principle-attribute: preferred_username
 
 management:
   endpoints:

@@ -1,6 +1,54 @@
 package com.example.license.config;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.core.convert.converter.Converter;
+import org.springframework.security.authentication.AbstractAuthenticationToken;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.oauth2.jwt.Jwt;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
+import org.springframework.security.web.SecurityFilterChain;
+
+@Configuration
+public class SecurityConfig {
+
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        return http
+
+                .authorizeHttpRequests(
+                        auth -> auth.requestMatchers("/static/style/**", "/static/images/**", "/").permitAll()
+                                .requestMatchers("/auth").permitAll()
+                                .requestMatchers("/types", "/licenses").hasRole("licensing-service-user")
+                                .requestMatchers("/types", "/licenses", "/types/*", "/licenses/*").hasRole("licensing-service-admin")
+                                .anyRequest().authenticated()
+                ).sessionManagement(
+                        session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                ).oauth2ResourceServer(
+                        resourceServer -> resourceServer.jwt(
+                                jwtConfigurer -> jwtConfigurer.jwtAuthenticationConverter(
+                                        keycloakAuthConverter()
+                                )
+                        )
+                )
+                .build();
+    }
+
+    private Converter<Jwt,? extends AbstractAuthenticationToken> keycloakAuthConverter() {
+        var converter = new JwtAuthenticationConverter();
+        converter.setJwtGrantedAuthoritiesConverter(
+                new AuthoritiesConverter()
+        );
+        return converter;
+    }
+
+}
+
 //import lombok.RequiredArgsConstructor;
+//import org.keycloak.adapters.springsecurity.authentication.KeycloakAuthenticationEntryPoint;
+//import org.keycloak.adapters.springsecurity.authentication.KeycloakLogoutHandler;
+//import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.context.annotation.Bean;
 //import org.springframework.context.annotation.Configuration;
 //import org.springframework.http.HttpMethod;
@@ -8,6 +56,8 @@ package com.example.license.config;
 //import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 //import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 //import org.springframework.security.web.SecurityFilterChain;
+//import org.springframework.security.web.access.AccessDeniedHandler;
+//import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 //
 //import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
 //
@@ -25,7 +75,7 @@ package com.example.license.config;
 ////    }
 //
 //    private final JwtAuthConverter jwtAuthConverter;
-//
+//    private final KeycloakLogoutHandler keycloakLogoutHandler;
 //    @Bean
 //    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 //        http
@@ -34,8 +84,14 @@ package com.example.license.config;
 //                .authorizeHttpRequests(authorize -> authorize
 //                        .requestMatchers("/static/style/**", "/static/images/**", "/")
 //                        .permitAll()
+//                        .requestMatchers("/types/*", "/licenses/*").hasRole("ADMIN")
+//                        .requestMatchers("/types", "/licenses").hasRole("USER")
 //                        .anyRequest()
-//                        .authenticated());
+//                        .authenticated())
+//                .logout(logout -> logout
+//                        .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+//                        .logoutSuccessUrl("/")
+//                        .permitAll());
 //
 //        http
 //                .oauth2ResourceServer()
