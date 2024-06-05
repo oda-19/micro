@@ -1,8 +1,8 @@
-<section tabindex="-1" id="deleteTypeModal" role="dialog" th:fragment="delete-type" class="u-black u-clearfix u-container-style u-dialog-block u-opacity u-opacity-70 u-dialog-section-8" >
+<section tabindex="-1" id="deleteLicenseModal" role="dialog" th:fragment="delete-license" class="u-black u-clearfix u-container-style u-dialog-block u-opacity u-opacity-70 u-dialog-section-8" >
     <div class="u-align-center u-border-2 u-border-grey-30 u-container-style u-dialog u-radius u-shape-round u-white u-dialog-1">
         <div class="u-container-layout u-container-layout-1">
-            <p class="u-custom-font u-font-montserrat u-large-text u-text u-text-variant u-text-1">Вы уверены, что хотите удалить тип лицензии "<span style="font-weight:bold" th:text="${type.name}"></span>"?<br></p>
-            <form th:action="@{/types/delete/{id}(id=${type.id})}" method="post">
+            <p class="u-custom-font u-font-montserrat u-large-text u-text u-text-variant u-text-1">Вы уверены, что хотите удалить лицензию на "<span style="font-weight:bold" th:text="${license.namePo}"></span>"?<br></p>
+            <form th:action="@{/licenses/delete/{id}(id=${license.id})}" method="post">
                 <div class="u-clearfix u-group-elements u-group-elements-1">
                     <button type="submit" class="u-btn u-btn-round u-button-style u-custom-color-10 u-custom-font u-font-montserrat u-hover-custom-color-12 u-radius u-btn-1" >Удалить </button>
                     <button type="button" data-dismiss="modal" class="u-btn u-btn-round u-button-style u-custom-color-10 u-custom-font u-font-montserrat u-hover-custom-color-12 u-radius u-btn-2">Отмена </button>

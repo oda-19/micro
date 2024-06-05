@@ -18,7 +18,7 @@ public class TypeService {
         if (keyword != null) {
             return typeRepository.searchByNameContainsIgnoreCase(keyword);
         }
-        return typeRepository.findAll();
+        return typeRepository.findAllByOrderByIdAsc();
     }
 
     public void createType(Type type){
@@ -30,11 +30,9 @@ public class TypeService {
     public boolean updateType(int typeId, Type type){
         Type existingType = typeRepository.findById(typeId).orElse(null);
         if (existingType != null) {
-            //type.setId(typeId);
             existingType.setName(type.getName());
-            //typeRepository.save(type);
             typeRepository.save(existingType);
-            return true; // Возвращаем true, если обновление прошло успешно
+            return true;
         }
         return false;
     }
