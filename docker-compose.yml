@@ -89,7 +89,7 @@ services:
     image: oda/licensing-service:0.0.1-SNAPSHOT
     container_name: licensing-service
     ports:
-      - "8180:8080"
+      - "8081:8081"
 
     environment:
       PROFILE: "dev"
@@ -99,6 +99,7 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://database:5432/license-service
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: 123456
+
 
     depends_on:
       database:

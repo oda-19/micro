@@ -14,8 +14,11 @@ public class LicenseService {
         return licenseRepository.findById(licenseId).orElse(null);
     }
 
-    public Iterable<License> findAllLicenses() {
-        return licenseRepository.findAll();
+    public Iterable<License> findAllLicenses(String keyword) {
+        if (keyword != null) {
+            return licenseRepository.searchByNamePoContainingIgnoreCase(keyword);
+        }
+        return licenseRepository.findAllByOrderByIdAsc();
     }
 
     public void createLicense(License license){
@@ -24,15 +27,21 @@ public class LicenseService {
         }
     }
 
-    public void updateLicense(int licenseId, License license){
+    public boolean updateLicense(int licenseId, License license){
         License existingLicense = licenseRepository.findById(licenseId).orElse(null);
         if (existingLicense != null) {
-            license.setId(licenseId);
-            licenseRepository.save(license);
+            existingLicense.setNamePo(license.getNamePo());
+            existingLicense.setIdType(license.getIdType());
+            existingLicense.setStartDate(license.getStartDate());
+            existingLicense.setEndDate(license.getEndDate());
+            existingLicense.setCount(license.getCount());
+            licenseRepository.save(existingLicense);
+            return true;
         }
+        return false;
     }
 
-    public void deleteLicense(int licenseId){
-        licenseRepository.deleteById(licenseId);
+    public void deleteLicense(License license){
+        licenseRepository.delete(license);
     }
 }

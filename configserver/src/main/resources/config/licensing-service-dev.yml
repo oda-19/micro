@@ -11,18 +11,19 @@ spring:
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
 
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: http://localhost:8080/realms/security-licensing-service
-          jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
+  #security:
+    #oauth2:
+      #resourceserver:
+        #jwt:
+          #issuer-uri: http://localhost:8080/realms/security-licensing-service
+          #issuer-uri: http://keycloak:8080/realms/security-licensing-service
+          #jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
 
-jwt:
-  auth:
-    converter:
-      resource-id: licensing-service
-      principle-attribute: preferred_username
+#jwt:
+  #auth:
+    #converter:
+      #resource-id: licensing-service
+      #principle-attribute: preferred_username
 
 management:
   endpoints:
@@ -32,7 +33,7 @@ management:
     enabled-by-default: true
 
 server:
-  port: 8180
+  port: 8081
 
 eureka:
   instance:
