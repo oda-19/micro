@@ -13,7 +13,7 @@ import java.util.List;
 
 @Getter
 @Setter
-@ToString
+@ToString(exclude = "licenses")
 @Entity
 @Table(name = "types")
 public class Type {
@@ -24,7 +24,11 @@ public class Type {
     @Column(name = "name")
     private String name;
 
-    @JsonIgnore
+//    //    @JsonIgnore
+//    @OneToMany(mappedBy = "idType", cascade = CascadeType.ALL)
+//    private List<License> licenses = new ArrayList<>();
+
+    @JsonManagedReference
     @OneToMany(mappedBy = "idType", cascade = CascadeType.ALL)
     private List<License> licenses = new ArrayList<>();
 }

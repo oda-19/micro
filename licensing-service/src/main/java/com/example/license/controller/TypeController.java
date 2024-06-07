@@ -2,45 +2,93 @@ package com.example.license.controller;
 
 import com.example.license.model.Type;
 import com.example.license.service.TypeService;
+import jakarta.annotation.security.RolesAllowed;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
+//import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-@RestController
+import javax.xml.transform.sax.SAXResult;
+import java.security.Principal;
+import java.util.List;
+
+@Controller
 @RequestMapping(value = "/types")
 public class TypeController {
     @Autowired
     private TypeService typeService;
 
-    @RequestMapping(value="/{typeId}",method = RequestMethod.GET)
-    public ResponseEntity<Type> getType(@PathVariable("typeId") int typeId){
-        Type type = typeService.getType(typeId);
-        return ResponseEntity.ok(type);
-    }
-
     @GetMapping
-    public ResponseEntity<Iterable<Type>> getAllTypes() {
-        Iterable<Type> types = typeService.findAllTypes();
-        return ResponseEntity.ok(types);
+    public String getAllTypes(Model model, @Param("keyword") String keyword, Principal principal) {
+        Iterable<Type> types = typeService.findAllTypes(keyword);
+        model.addAttribute("types", types);
+        model.addAttribute("keyword", keyword);
+        model.addAttribute("username", principal.getName());
+        return "types";
     }
 
-    @PostMapping
-    public ResponseEntity<String> createType(@RequestBody Type request){
+    @GetMapping(value="/create")
+    public String showCreateForm(Model model, Principal principal) {
+        model.addAttribute("type", new Type());
+        model.addAttribute("username", principal.getName());
+        return "create_type";
+    }
+
+    @PostMapping(value = "/create")
+    public String createType(@ModelAttribute Type request, Model model, Principal principal) {
         typeService.createType(request);
-        return ResponseEntity.ok("Добавление типа лицензии прошло успешно");
-
+        model.addAttribute("message", "Добавление типа лицензии прошло успешно");
+        model.addAttribute("username", principal.getName());
+        return "redirect:/types";
     }
 
-    @PutMapping(value="/{typeId}")
-    public ResponseEntity<String> updateType(@PathVariable("typeId") int typeId, @RequestBody Type request){
-        typeService.updateType(typeId, request);
-        return ResponseEntity.ok("Редактирование типа лицензии прошло успешно");
-
+    @GetMapping(value="/update/{typeId}/")
+    public String showUpdateForm(@PathVariable("typeId") int typeId, Model model, Principal principal) {
+        Type type = typeService.getType(typeId);
+        if (type != null) {
+            model.addAttribute("type", type);
+            model.addAttribute("username", principal.getName());
+            return "update_type";
+        } else {
+            model.addAttribute("message", "Тип лицензии с таким ID не найден.");
+            return "redirect:/types";
+        }
     }
 
-    @DeleteMapping(value="/{typeId}")
-    public ResponseEntity<String> deleteType(@PathVariable("typeId") int typeId){
-        typeService.deleteType(typeId);
-        return ResponseEntity.ok("Удаление типа лицензии прошло успешно");
+    @PostMapping(value="/update/{typeId}/")
+    public String updateType(@PathVariable("typeId") int typeId, @ModelAttribute Type request, Model model, Principal principal) {
+        boolean updated = typeService.updateType(typeId, request);
+        if (updated) {
+            model.addAttribute("message", "Редактирование типа лицензии прошло успешно");
+            model.addAttribute("username", principal.getName());
+        } else {
+            model.addAttribute("message", "Ошибка при редактировании типа лицензии");
+        }
+        return "redirect:/types";
+    }
+
+    @GetMapping(value="/delete/{typeId}")
+    public String deleteTypeConfirmation(@PathVariable("typeId") int typeId, ModelMap model, Principal principal) {
+        Type type = typeService.getType(typeId);
+        model.addAttribute("type", type);
+        model.addAttribute("username", principal.getName());
+        return "delete_type :: delete-type";
+    }
+
+    @PostMapping(value="/delete/{typeId}")
+    public ModelAndView deleteType(@PathVariable("typeId") int typeId, ModelMap model, @Param("keyword") String keyword, Principal principal) {
+        Type type = typeService.getType(typeId);
+        typeService.deleteType(type);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("redirect:/types");
+        modelAndView.addObject("types", typeService.findAllTypes(keyword));
+        model.addAttribute("username", principal.getName());
+        return modelAndView;
     }
 }

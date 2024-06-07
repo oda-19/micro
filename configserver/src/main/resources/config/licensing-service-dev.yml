@@ -1,8 +1,8 @@
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://database:5432/license-service
-    #url: jdbc:postgresql://localhost:5432/license-service
+    #url: jdbc:postgresql://database:5432/license-service
+    url: jdbc:postgresql://localhost:5432/license-service
     username: postgres
     password: 123456
   jpa:
@@ -11,12 +11,29 @@ spring:
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
 
+  #security:
+    #oauth2:
+      #resourceserver:
+        #jwt:
+          #issuer-uri: http://localhost:8080/realms/security-licensing-service
+          #issuer-uri: http://keycloak:8080/realms/security-licensing-service
+          #jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
+
+#jwt:
+  #auth:
+    #converter:
+      #resource-id: licensing-service
+      #principle-attribute: preferred_username
+
 management:
   endpoints:
     web:
       exposure:
         include: "*"
     enabled-by-default: true
+
+server:
+  port: 8081
 
 eureka:
   instance:
@@ -25,6 +42,6 @@ eureka:
     registerWithEureka: true
     fetchRegistry: true
     service-url:
-      defaultZone: http://eurekaserver:8070/eureka/
-      #defaultZone: http://localhost:8070/eureka/
+      #defaultZone: http://eurekaserver:8070/eureka/
+      defaultZone: http://localhost:8070/eureka/
 

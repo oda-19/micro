@@ -14,8 +14,11 @@ public class TypeService {
         return typeRepository.findById(typeId).orElse(null);
     }
 
-    public Iterable<Type> findAllTypes() {
-        return typeRepository.findAll();
+    public Iterable<Type> findAllTypes(String keyword) {
+        if (keyword != null) {
+            return typeRepository.searchByNameContainsIgnoreCase(keyword);
+        }
+        return typeRepository.findAllByOrderByIdAsc();
     }
 
     public void createType(Type type){
@@ -24,15 +27,17 @@ public class TypeService {
         }
     }
 
-    public void updateType(int typeId, Type type){
+    public boolean updateType(int typeId, Type type){
         Type existingType = typeRepository.findById(typeId).orElse(null);
         if (existingType != null) {
-            type.setId(typeId);
-            typeRepository.save(type);
+            existingType.setName(type.getName());
+            typeRepository.save(existingType);
+            return true;
         }
+        return false;
     }
 
-    public void deleteType(int typeId){
-        typeRepository.deleteById(typeId);
+    public void deleteType(Type type){
+        typeRepository.delete(type);
     }
 }
