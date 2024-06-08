@@ -122,6 +122,8 @@ services:
       - "8080:8080"
 
     volumes:
+
+      - ./keycloak-custom-theme-master/themes/custom-theme/theme:/opt/keycloak/themes
       - ./docker/keycloak/realms/:/opt/keycloak/data/import/
 
     networks:

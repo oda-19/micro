@@ -13,6 +13,7 @@
         <option value="$PROJECT_DIR$/configserver/pom.xml" />
         <option value="$PROJECT_DIR$/gatewayserver/pom.xml" />
         <option value="$PROJECT_DIR$/licensing-service/pom.xml" />
+        <option value="$PROJECT_DIR$/custom-auth-service/pom.xml" />
       </list>
     </option>
   </component>

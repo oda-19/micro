@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/keycloak-custom-theme-master/keycloak-custom-theme-master.iml" filepath="$PROJECT_DIR$/keycloak-custom-theme-master/keycloak-custom-theme-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/micro.iml" filepath="$PROJECT_DIR$/micro.iml" />
     </modules>
   </component>
