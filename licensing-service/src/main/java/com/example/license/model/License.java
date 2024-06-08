@@ -23,10 +23,6 @@ public class License {
     @Column(name = "namepo")
     private String namePo;
 
-//    @ManyToOne
-//    @JoinColumn(name = "idtype")
-//    private Type idType;
-
     @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "idtype")

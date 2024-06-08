@@ -24,10 +24,6 @@ public class Type {
     @Column(name = "name")
     private String name;
 
-//    //    @JsonIgnore
-//    @OneToMany(mappedBy = "idType", cascade = CascadeType.ALL)
-//    private List<License> licenses = new ArrayList<>();
-
     @JsonManagedReference
     @OneToMany(mappedBy = "idType", cascade = CascadeType.ALL)
     private List<License> licenses = new ArrayList<>();
