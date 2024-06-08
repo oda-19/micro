@@ -7,6 +7,7 @@
     <file url="file://$PROJECT_DIR$/configserver/src/main/resources/config/gatewayserver.yml" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/configserver/src/main/resources/config/licensing-service-dev.yml" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/configserver/src/main/resources/config/licensing-service.yml" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/custom-auth-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/data.sql" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/docker-compose.yml" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/eurekaserver/src/main/java" charset="UTF-8" />
@@ -15,6 +16,11 @@
     <file url="file://$PROJECT_DIR$/gatewayserver/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/gatewayserver/src/main/resources/bootstrap.yml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/init.sql" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/keycloak-custom-theme-master/themes/custom-theme/theme/custom/login/resources/img/rostov-gosud-univer_1.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/keycloak-custom-theme-master/themes/custom-theme/theme/new/login/login.ftl" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/keycloak-custom-theme-master/themes/custom-theme/theme/new/login/resources/css/home.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/keycloak-custom-theme-master/themes/custom-theme/theme/new/login/resources/css/nicepage.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/keycloak-custom-theme-master/themes/custom-theme/theme/new/login/template.ftl" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/java/com/example/license/HomeController.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/java/com/example/license/LicenseServiceApplication.java" charset="UTF-8" />
@@ -22,6 +28,7 @@
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/java/com/example/license/config/AuthDTO.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/java/com/example/license/config/AuthoritiesConverter.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/java/com/example/license/config/JwtAuthConverter.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/licensing-service/src/main/java/com/example/license/config/SecurityConfig 2.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/java/com/example/license/config/SecurityConfig.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/java/com/example/license/controller/LicenseController.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/java/com/example/license/controller/TypeController.java" charset="UTF-8" />
@@ -36,11 +43,13 @@
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/application.yml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/bootstrap.yml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/logback-spring.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/static/images/13808841.jpg" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/static/jquery.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/static/nicepage.css" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/static/nicepage.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/static/style/create_license.css" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/static/style/create_type.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/static/style/home.css" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/static/style/home.css" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/static/style/jquery.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/static/style/licenses.css" charset="UTF-8" />
@@ -63,6 +72,7 @@
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/templates/create_type.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/templates/delete_license.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/templates/delete_type.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/templates/home.html" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/templates/home.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/templates/licenses.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/templates/support.html" charset="UTF-8" />
@@ -70,7 +80,6 @@
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/templates/update_license.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/templates/update_type.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/templates/Диплом_авторизация.html" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/templates/Диплом_главная.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/templates/Диплом_добавить_лицензию.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/templates/Диплом_добавить_тип.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/templates/Диплом_редактировать-лицензию.html" charset="UTF-8" />

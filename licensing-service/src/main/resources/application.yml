@@ -30,15 +30,3 @@ spring:
       resourceserver:
         jwt:
           issuer-uri: http://localhost:8080/realms/security-licensing-service
-
-
-  #main:
-    #allow-bean-definition-overriding: true
-  #cloud:
-    #compatibility-verifier:
-      #enabled: false
-
-  #management.endpoints.enabled-by-default: false
-#management.endpoint.health:
-  #enabled: true
-  #show-details: always
