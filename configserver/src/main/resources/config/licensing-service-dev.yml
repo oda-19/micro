@@ -1,13 +1,12 @@
 client-id: licensing-service
-#resource-url: http://localhost:8080/realms/security-licensing-service/protocol/openid-connect/token
-resource-url: http://keycloak:8080/realms/security-licensing-service/protocol/openid-connect/token
+resource-url: http://localhost:8080/realms/security-licensing-service/protocol/openid-connect/token
 grant-type: password
 
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://database:5432/license-service
-    #url: jdbc:postgresql://localhost:5432/license-service
+    #url: jdbc:postgresql://database:5432/license-service
+    url: jdbc:postgresql://localhost:5432/license-service
     username: postgres
     password: 123456
   jpa:
@@ -27,14 +26,12 @@ spring:
 
         provider:
           keycloak:
-#            issuer-uri: http://localhost:8080/realms/security-licensing-service
-            issuer-uri: http://keycloak:8080/realms/security-licensing-service
+            issuer-uri: http://localhost:8080/realms/security-licensing-service
             user-name-attribute: preferred_username
 
       resourceserver:
         jwt:
-          #issuer-uri: http://localhost:8080/realms/security-licensing-service
-          issuer-uri: http://keycloak:8080/realms/security-licensing-service
+          issuer-uri: http://localhost:8080/realms/security-licensing-service
 
   #security:
     #oauth2:
@@ -67,6 +64,6 @@ eureka:
     registerWithEureka: true
     fetchRegistry: true
     service-url:
-      defaultZone: http://eurekaserver:8070/eureka/
-      #defaultZone: http://localhost:8070/eureka/
+      #defaultZone: http://eurekaserver:8070/eureka/
+      defaultZone: http://localhost:8070/eureka/
 
