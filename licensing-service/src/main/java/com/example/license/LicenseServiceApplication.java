@@ -19,5 +19,6 @@ public class LicenseServiceApplication {
     public RestTemplate restTemplate() {
         return new RestTemplate();
     }
+
 }
 
