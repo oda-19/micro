@@ -1,6 +1,4 @@
-client-id: licensing-service
-resource-url: http://localhost:8080/realms/security-licensing-service/protocol/openid-connect/token
-grant-type: password
+
 
 spring:
   application:
@@ -13,20 +11,3 @@ spring:
   mvc:
     static-path-pattern: /static/**
 
-  security:
-    oauth2:
-      client:
-        registration:
-          keycloak:
-            client-id: licensing-service
-            authorization-grant-type: authorization_code
-            scope: openid
-
-        provider:
-          keycloak:
-            issuer-uri: http://localhost:8080/realms/security-licensing-service
-            user-name-attribute: preferred_username
-
-      resourceserver:
-        jwt:
-          issuer-uri: http://localhost:8080/realms/security-licensing-service

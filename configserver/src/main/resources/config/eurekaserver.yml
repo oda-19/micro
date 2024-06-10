@@ -11,8 +11,8 @@ server:
 
 eureka:
   instance:
-    #hostname: eurekaserver
-    hostname: localhost
+    hostname: eurekaserver
+    #hostname: localhost
 
 
   client:
