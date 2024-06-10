@@ -49,7 +49,6 @@
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/static/nicepage.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/static/style/create_license.css" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/static/style/create_type.css" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/static/style/home.css" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/static/style/home.css" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/static/style/jquery.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/static/style/licenses.css" charset="UTF-8" />
@@ -72,7 +71,6 @@
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/templates/create_type.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/templates/delete_license.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/templates/delete_type.html" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/templates/home.html" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/templates/home.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/templates/licenses.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/templates/support.html" charset="UTF-8" />
