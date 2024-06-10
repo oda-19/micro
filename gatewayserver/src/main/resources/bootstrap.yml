@@ -2,9 +2,3 @@ spring:
   cloud:
     config:
       uri: http://${CONFIGSERVER_URI:localhost}:${CONFIGSERVER_PORT:8071}
-    discovery:
-      enabled: true
-
-eureka:
-  instance:
-    hostname: localhost
