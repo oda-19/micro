@@ -4,10 +4,10 @@
 <head>
   <meta charset="utf-8">
   <title>Редактировать лицензию</title>
-  <link rel="stylesheet" href="/style/style.css" type="text/css" th:href="@{/style/style.css}">
+  <link rel="stylesheet" href="/static/style/style.css" type="text/css" th:href="@{/static/style/style.css}">
   <link rel="stylesheet" href="/static/style/update_license.css" type="text/css" th:href="@{/static/style/update_license.css}">
-  <script class="u-script" type="text/javascript" src="/style/js.js" th:src="@{/style/js.js}"></script>
-  <script class="u-script" type="text/javascript" src="/style/general.js" th:src="@{/style/general.js}"></script>
+  <script class="u-script" type="text/javascript" src="/static/style/js.js" th:src="@{/static/style/js.js}"></script>
+  <script class="u-script" type="text/javascript" src="/static/style/general.js" th:src="@{/static/style/general.js}"></script>
   <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
   <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
 </head>
@@ -94,10 +94,14 @@
                   <label for="email-50cf" class="u-custom-font u-font-montserrat u-label u-label-3">Окончание активации</label>
                   <input th:field="*{endDate}" type="text" id="email-50cf" name="endDate" class="u-custom-font u-font-montserrat u-input u-input-rectangle u-radius u-input-4" required="required">
                 </div>
-                <div class="u-form-group u-label-top u-form-group-5">
-                  <label for="text-940d" class="u-custom-font u-font-montserrat u-label u-label-4">Количество лицензий</label>
-                  <input th:field="*{count}" type="text" id="text-940d" name="count" class="u-custom-font u-font-montserrat u-input u-input-rectangle u-radius u-input-5" required="required">
+                <div class="u-form-group u-form-partition-factor-2 u-label-top">
+                  <label for="text-940d" class="u-custom-font u-font-montserrat u-label u-label-4">Лицензий всего</label>
+                  <input th:field="*{countStart}" type="text" name="countStart" class="u-custom-font u-font-montserrat u-input u-input-rectangle u-radius u-input-5" required="required">
                 </div>
+                  <div class="u-form-group u-form-partition-factor-2 u-label-top">
+                    <label for="text-940d" class="u-custom-font u-font-montserrat u-label u-label-4">Лицензий осталось</label>
+                    <input th:field="*{countNow}" type="text" id="text-940d" name="countNow" class="u-custom-font u-font-montserrat u-input u-input-rectangle u-radius u-input-5" required="required">
+                  </div>
                 <div class="u-align-center u-form-group u-form-submit u-label-top">
                   <input type="submit" class="u-form-control-hidden">
                   <a class="u-btn u-btn-round u-btn-submit u-button-style u-custom-color-10 u-custom-font u-font-montserrat u-hover-custom-color-12 u-radius u-btn-1">Редактировать</a>

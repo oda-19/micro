@@ -34,7 +34,8 @@ public class LicenseService {
             existingLicense.setIdType(license.getIdType());
             existingLicense.setStartDate(license.getStartDate());
             existingLicense.setEndDate(license.getEndDate());
-            existingLicense.setCount(license.getCount());
+            existingLicense.setCountStart(license.getCountStart());
+            existingLicense.setCountNow(license.getCountNow());
             licenseRepository.save(existingLicense);
             return true;
         }

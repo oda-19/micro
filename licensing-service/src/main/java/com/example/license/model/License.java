@@ -34,6 +34,9 @@ public class License {
     @Column(name = "enddate")
     private LocalDate endDate;
 
-    @Column(name = "count")
-    private Integer count;
+    @Column(name = "countstart")
+    private Integer countStart;
+
+    @Column(name = "countnow")
+    private Integer countNow;
 }

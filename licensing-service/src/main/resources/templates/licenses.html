@@ -4,10 +4,10 @@
 <head>
   <meta charset="utf-8">
   <title>Список лицензий</title>
-  <link rel="stylesheet" href="/style/style.css" type="text/css" th:href="@{/style/style.css}">
+  <link rel="stylesheet" href="/static/style/style.css" type="text/css" th:href="@{/static/style/style.css}">
   <link rel="stylesheet" href="/static/style/licenses.css" type="text/css" th:href="@{/static/style/licenses.css}">
-  <script class="u-script" type="text/javascript" src="/style/js.js" th:src="@{/style/js.js}"></script>
-  <script class="u-script" type="text/javascript" src="/style/general.js" th:src="@{/style/general.js}"></script>
+  <script class="u-script" type="text/javascript" src="/static/style/js.js" th:src="@{/static/style/js.js}"></script>
+  <script class="u-script" type="text/javascript" src="/static/style/general.js" th:src="@{/static/style/general.js}"></script>
   <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
   <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -112,6 +112,7 @@
                   <col width="16.6%">
                   <col width="16.6%">
                   <col width="16.6%">
+                  <col width="16.6%">
                   <col width="17.000000000000004%">
                 </colgroup>
                 <thead class="u-align-center u-custom-font u-font-montserrat u-table-header u-table-header-1">
@@ -120,7 +121,8 @@
                   <th class="u-border-3 u-border-grey-25 u-border-no-left u-border-no-right u-border-no-top u-table-cell u-table-cell-2">Тип лицензии</th>
                   <th class="u-border-3 u-border-grey-25 u-border-no-left u-border-no-right u-border-no-top u-table-cell u-table-cell-3">начало активации</th>
                   <th class="u-border-3 u-border-grey-25 u-border-no-left u-border-no-right u-border-no-top u-table-cell u-table-cell-4">Окончание активации</th>
-                  <th class="u-border-3 u-border-grey-25 u-border-no-left u-border-no-right u-border-no-top u-table-cell u-table-cell-5">количество </th>
+                  <th class="u-border-3 u-border-grey-25 u-border-no-left u-border-no-right u-border-no-top u-table-cell u-table-cell-5">Кол-во всего</th>
+                  <th class="u-border-3 u-border-grey-25 u-border-no-left u-border-no-right u-border-no-top u-table-cell u-table-cell-5">Кол-во осталось </th>
                   <th class="u-border-3 u-border-grey-25 u-border-no-left u-border-no-right u-border-no-top u-table-cell u-table-cell-6">функции</th>
                 </tr>
                 </thead>
@@ -130,7 +132,8 @@
                   <td class="u-border-2 u-border-grey-15 u-border-no-left u-border-no-right u-table-cell" th:text="${license.idType.name}"></td>
                   <td class="u-border-2 u-border-grey-15 u-border-no-left u-border-no-right u-table-cell" th:text="${license.startDate}"></td>
                   <td class="u-border-2 u-border-grey-15 u-border-no-left u-border-no-right u-table-cell" th:text="${license.endDate}"></td>
-                  <td class="u-border-2 u-border-grey-15 u-border-no-left u-border-no-right u-table-cell" th:text="${license.count}"></td>
+                  <td class="u-border-2 u-border-grey-15 u-border-no-left u-border-no-right u-table-cell" th:text="${license.countStart}"></td>
+                  <td class="u-border-2 u-border-grey-15 u-border-no-left u-border-no-right u-table-cell" th:text="${license.countNow}"></td>
                   <td class="u-border-2 u-border-grey-15 u-border-no-left u-border-no-right u-table-cell u-table-cell-12">
                     <a th:href="@{/licenses/update/{id}/(id=${license.id})}">
                       <span class="u-file-icon u-icon u-icon-8">
