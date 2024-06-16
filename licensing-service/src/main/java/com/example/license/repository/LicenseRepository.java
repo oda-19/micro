@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface LicenseRepository extends CrudRepository<License,Integer> {
-    List<License> findAllByOrderByIdAsc();
+    List<License> findAllByOrderByEndDateAscNamePoAsc();
     public Iterable<License> searchByNamePoContainingIgnoreCase(String keyword);
 }

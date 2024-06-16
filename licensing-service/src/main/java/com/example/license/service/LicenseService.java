@@ -18,7 +18,7 @@ public class LicenseService {
         if (keyword != null) {
             return licenseRepository.searchByNamePoContainingIgnoreCase(keyword);
         }
-        return licenseRepository.findAllByOrderByIdAsc();
+        return licenseRepository.findAllByOrderByEndDateAscNamePoAsc();
     }
 
     public void createLicense(License license){

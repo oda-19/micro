@@ -24,7 +24,7 @@
         </div>
         <div class="box-container">
             <div>
-                <p class="application-name">Информационная система учета лицензий на ПО РГЭУ "РИНХ"</p>
+                <p class="application-name">Информационная система учета лицензий на ПО "РГЭУ (РИНХ)"</p>
             </div>
             <#if realm.password>
                 <div>
