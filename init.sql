@@ -12,7 +12,8 @@ CREATE TABLE IF NOT EXISTS public.licenses
     idType integer NOT NULL,
     startDate Date NOT NULL,
     endDate Date NOT NULL,
-    count integer NOT NULL,
+    countStart integer NOT NULL,
+    countNow integer NOT NULL,
     CONSTRAINT licenses_pkey PRIMARY KEY (id),
     CONSTRAINT idType FOREIGN KEY (idType)
         REFERENCES public.types (id) MATCH SIMPLE
