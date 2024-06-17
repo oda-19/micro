@@ -9,8 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
 
 import java.time.LocalDate;
 
@@ -35,7 +33,8 @@ public class LicenseIntegrationTest {
         newLicense.setNamePo("Пример лицензии");
         newLicense.setStartDate(LocalDate.now());
         newLicense.setEndDate(LocalDate.now().plusYears(1));
-        newLicense.setCount(100);
+        newLicense.setCountStart(100);
+        newLicense.setCountNow(90);
 
         existingType = entityManager.find(Type.class, 2);
         newLicense.setIdType(existingType);
@@ -66,11 +65,11 @@ public class LicenseIntegrationTest {
         entityManager.flush();
 
         License foundLicense = licenseRepository.findById(savedLicense.getId()).orElse(null);
-        foundLicense.setCount(200);
+        foundLicense.setCountStart(200);
         License updatedLicense = entityManager.persist(foundLicense);
         entityManager.flush();
 
-        assertThat(updatedLicense.getCount()).isEqualTo(200);
+        assertThat(updatedLicense.getCountStart()).isEqualTo(200);
     }
 
     @Test
