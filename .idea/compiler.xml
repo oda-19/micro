@@ -15,7 +15,6 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="custom-auth-service" target="17" />
-      <module name="micro" target="17" />
       <module name="organization-service" target="17" />
     </bytecodeTargetLevel>
   </component>
