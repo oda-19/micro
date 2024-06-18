@@ -72,9 +72,6 @@ body {
   outline: none;
   background-color: #fff;
 }
-.login-content .box input[type="text"]:focus, .login-content .box input[type="password"]:focus {
-  border-bottom: 2px solid #0055B8;
-}
 .login-content .box input[type="text"]:-webkit-autofill, .login-content .box input[type="password"]:-webkit-autofill
 {
   box-shadow: 0 0 0px 1000px white inset;
@@ -114,62 +111,4 @@ body {
   opacity: .54;
   position: relative;
   top: 55px;
-}
-.message-text {
-  width: 322px;
-  opacity: 0.87;
-  font-family: Montserrat;
-  font-size: 14px;
-  font-weight: bold;
-  font-style: normal;
-  font-stretch: normal;
-  text-align: left;
-  color: #b8082a;
-  border: 0px;
-  position: relative;
-  top: 205px;
-  left: 155px;
-  display: inline-flex;
-  align-items: center;
-}
-.identity-providers {
-  width: 270px;
-  font-family: Montserrat;
-  font-size: 16px;
-  font-weight: 600;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 0.83;
-  letter-spacing: -0.4px;
-  text-align: left;
-  color: #0055B8;
-  margin-left: 32px;
-  margin-top: 20px;
-}
-
-.login-content .box .social-link-style {
-  width: 320px;
-  height: 36px;
-  border-radius: 2px;
-  background-color: var(--white);
-  font-family: Montserrat;
-  font-size: 14px;
-  font-weight: bold;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: #00754a;
-  border-style: solid;
-  border-color: #00754a;
-  margin-top: 0px;
-  margin-left: 30px;
-  margin-bottom: 10px;
-}
-
-.login-content .box .para {
-  font-family: Montserrat;
-  font-size: 14px;
-  margin-left: 30px;
 }

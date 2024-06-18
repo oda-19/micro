@@ -49,11 +49,17 @@
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/static/nicepage.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/static/style/create_license.css" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/static/style/create_type.css" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/static/style/general.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/static/style/general.js" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/static/style/general2.js" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/static/style/home.css" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/static/style/js.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/static/style/js.js" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/static/style/js2.js" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/static/style/js2.js" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/static/style/licenses.css" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/static/style/style.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/static/style/style2.css" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/static/style/style2.css" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/static/style/style22.css" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/static/style/support.css" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/static/style/types.css" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/licensing-service/src/main/resources/static/style/update_license.css" charset="UTF-8" />
